@@ -27,3 +27,12 @@ exports.read_a_task = function(req, res) {
     res.json(task);
   });
 };
+
+
+exports.update_a_task = function(req, res) {
+  Task.findOneAndUpdate({_id: req.params.taskId}, req.body, {new: true}, function(err, task) {
+    if (err)
+      res.send(err);
+    res.json(task);
+  });
+};
